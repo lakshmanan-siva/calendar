@@ -1,4 +1,4 @@
-import { VibrantToolbar, ViewButton, DEFAULT_EVENT_BACKGROUND, EVENT_BORDER_COLOR } from '../styles/CalendarStyles';
+import { VibrantToolbar, ViewButton, DEFAULT_EVENT_BACKGROUND, EVENT_BORDER_COLOR } from '../styles/calendarStyles';
 import moment from 'moment';
 
 

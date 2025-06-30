@@ -1,6 +1,4 @@
-// src/components/EventDetailsModal.jsx
 
-import React from 'react';
 import moment from 'moment';
 import {
   Modal,
@@ -16,7 +14,7 @@ import {
   Download as DownloadIcon
 } from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
-import { EventModalBox } from '../styles/CalendarStyles'; // Assuming EventModalBox provides basic modal positioning/background
+import { EventModalBox } from '../styles/calendarStyles'; 
 
 const EventDetailsModal = ({ event, open, onClose }) => {
   if (!event) return null;

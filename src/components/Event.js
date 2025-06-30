@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import moment from 'moment';
 import { Chip } from '@mui/material';
-import { StyledEvent } from '../styles/CalendarStyles';
+import { StyledEvent } from '../styles/calendarStyles';
 import DailyEventsPopover from './DailyEventsPopover';
 
 const Event = ({ event, view, allEventsForDay, onSelectEvent, ...props }) => {
