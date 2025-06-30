@@ -1,3 +1,4 @@
+import React from 'react';
 import CalendarComponent from './components/CalendarComponent';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -6,15 +7,19 @@ import CssBaseline from '@mui/material/CssBaseline';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#6A1B9A', // A vibrant purple
+      main: '#4285F4', // Google Blue for primary actions
     },
     secondary: {
-      main: '#D81B60', // A vibrant pink
+      main: '#DB4437', // A secondary color if needed (e.g., Google Red)
     },
     background: {
-      default: '#f4f6f8',
-      paper: '#FFFFFF',
+      default: '#f8f9fa', // Light background for the overall app
+      paper: '#FFFFFF', // White for cards/modals
     },
+    text: {
+      primary: '#333333',
+      secondary: '#666666',
+    }
   },
   typography: {
     fontFamily: 'Roboto, sans-serif',
@@ -33,6 +38,22 @@ const theme = createTheme({
         },
       },
     },
+    MuiAppBar: { // Customizing AppBar for the top navigation
+      styleOverrides: {
+        root: {
+          // If you want a full white app bar:
+          // backgroundColor: '#FFFFFF',
+          // borderBottom: '1px solid #eee',
+        }
+      }
+    },
+    MuiPaper: { // Customizing general Paper component (used for calendar container)
+      styleOverrides: {
+        root: {
+          boxShadow: 'none', // Remove default shadow from Paper components if desired
+        }
+      }
+    }
   },
 });
 

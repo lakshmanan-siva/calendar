@@ -13,9 +13,10 @@ import {
   ListItemAvatar,
   Divider,
   styled,
-  alpha 
+  alpha
 } from '@mui/material';
 
+// Custom styled components
 export const VibrantToolbar = styled(Toolbar)(({ theme }) => ({
   background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
   color: theme.palette.common.white,
@@ -33,7 +34,7 @@ export const ViewButton = styled(Button)(({ theme, selected }) => ({
   },
   padding: theme.spacing(0.5, 1),
   minWidth: 'unset',
-  '& .button-text': { 
+  '& .button-text': {
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
@@ -62,54 +63,75 @@ export const EventModalBox = styled(Box)(({ theme, eventcolor }) => ({
   }
 }));
 
-export const StyledEvent = styled('div')(({ theme, eventcolor }) => ({
-  backgroundColor: eventcolor || eventColors.default,
-  color: 'white',
-  padding: '6px 8px',
-  borderRadius: '8px',
-  height: '100%',
-  overflow: 'hidden',
-  fontSize: '13px',
-  borderLeft: `4px solid ${darkenColor(eventcolor || eventColors.default, 20)}`, // Using the darkenColor helper
-  boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+// New default event color and border color
+export const DEFAULT_EVENT_BACKGROUND = '#FFFFFF';
+export const EVENT_BORDER_COLOR = '#4285F4'; // This is a blue color
+
+export const StyledEvent = styled('div')(({ theme, view }) => ({
+  backgroundColor: DEFAULT_EVENT_BACKGROUND,
+  color: theme.palette.text.primary,
+  border: `1px solid ${alpha(EVENT_BORDER_COLOR, 0.3)}`,
+  borderLeft: `4px solid ${EVENT_BORDER_COLOR}`,
+  borderRadius: '4px',
+  boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+  width: "100%",
+  minHeight: '80px',
+  overflow: 'hidden', // Keep overflow hidden to contain the wrapping text
+  padding: '4px 8px',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
-  whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis',
+  alignItems: 'flex-start',
+  position: 'relative',
+  cursor: 'pointer',
+
   '& .event-title': {
     fontWeight: 'bold',
+    fontSize: view === 'month' ? '12px' : '10px',
     marginBottom: '2px',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    // Removed whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' to allow wrapping
+  },
+  '& .event-interviewer': {
+    fontSize: view === 'month' ? '10px' : '8px',
+    color: theme.palette.text.secondary,
   },
   '& .event-time': {
+    fontSize: view === 'month' ? '9px' : '7px',
+    color: theme.palette.text.secondary,
+    // Removed whiteSpace: 'nowrap', overflow: 'hidden', to allow wrapping
+    marginTop: view === 'month' ? '0px' : '1px',
+  },
+
+  '& .notification-chip': {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    backgroundColor: '#FFEB3B',
+    color: '#333',
+    height: '18px',
+    width: '18px',
+    minWidth: 'unset',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     fontSize: '11px',
-    opacity: 0.9,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    fontWeight: 'bold',
+    padding: 0,
+    cursor: 'pointer',
+    zIndex: 1,
+    boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+    '& .MuiChip-label': {
+      padding: 0,
+    }
   }
 }));
 
+// Event colors are now mostly for internal logic, not background
 export const eventColors = {
-  "1st Round": "#FF6B6B",
-  "Test": "#4ECDC4",
-  "2nd Round": "#45B7D1",
-  "3rd Round": "#FFA07A",
-  "Final Round": "#98D8C8",
-  "default": "#A4B0BE"
+  "1st Round": EVENT_BORDER_COLOR,
+  "Test": EVENT_BORDER_COLOR,
+  "2nd Round": EVENT_BORDER_COLOR,
+  "3rd Round": EVENT_BORDER_COLOR,
+  "Final Round": EVENT_BORDER_COLOR,
+  "default": EVENT_BORDER_COLOR
 };
-
-function darkenColor(color, percent) {
-  const num = parseInt(color.replace("#", ""), 16);
-  const amt = Math.round(2.55 * percent);
-  const R = (num >> 16) - amt;
-  const G = ((num >> 8) & 0x00FF) - amt;
-  const B = (num & 0x0000FF) - amt;
-  return `#${(
-    0x1000000 +
-    (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
-    (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
-    (B < 255 ? (B < 1 ? 0 : B) : 255)
-  ).toString(16).slice(1)}`;
-}
