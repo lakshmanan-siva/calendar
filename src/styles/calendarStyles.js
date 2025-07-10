@@ -1,45 +1,8 @@
 import {
-  AppBar,
-  Toolbar,
-  Button,
   Box,
-  Paper,
-  Modal,
-  Chip,
-  Avatar,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Divider,
   styled,
   alpha
 } from '@mui/material';
-
-// Custom styled components
-export const VibrantToolbar = styled(Toolbar)(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-  color: theme.palette.common.white,
-  borderRadius: '12px 12px 0 0',
-  marginBottom: theme.spacing(1),
-  padding: theme.spacing(1, 2),
-}));
-
-export const ViewButton = styled(Button)(({ theme, selected }) => ({
-  backgroundColor: selected ? alpha(theme.palette.common.white, 0.2) : 'transparent',
-  color: theme.palette.common.white,
-  border: selected ? `1px solid ${theme.palette.common.white}` : '1px solid transparent',
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.1),
-  },
-  padding: theme.spacing(0.5, 1),
-  minWidth: 'unset',
-  '& .button-text': {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
-  },
-}));
 
 export const EventModalBox = styled(Box)(({ theme, eventcolor }) => ({
   position: 'absolute',
@@ -63,9 +26,8 @@ export const EventModalBox = styled(Box)(({ theme, eventcolor }) => ({
   }
 }));
 
-// New default event color and border color
 export const DEFAULT_EVENT_BACKGROUND = '#FFFFFF';
-export const EVENT_BORDER_COLOR = '#4285F4'; // This is a blue color
+export const EVENT_BORDER_COLOR = '#4285F4';
 
 export const StyledEvent = styled('div')(({ theme, view }) => ({
   backgroundColor: DEFAULT_EVENT_BACKGROUND,
@@ -76,19 +38,18 @@ export const StyledEvent = styled('div')(({ theme, view }) => ({
   boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
   width: "100%",
   minHeight: '80px',
-  overflow: 'hidden', // Keep overflow hidden to contain the wrapping text
+  overflow: 'hidden',
   padding: '4px 8px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
   position: 'relative',
   cursor: 'pointer',
-
+  height:"100%",
   '& .event-title': {
     fontWeight: 'bold',
     fontSize: view === 'month' ? '12px' : '10px',
     marginBottom: '2px',
-    // Removed whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' to allow wrapping
   },
   '& .event-interviewer': {
     fontSize: view === 'month' ? '10px' : '8px',
@@ -97,10 +58,9 @@ export const StyledEvent = styled('div')(({ theme, view }) => ({
   '& .event-time': {
     fontSize: view === 'month' ? '9px' : '7px',
     color: theme.palette.text.secondary,
-    // Removed whiteSpace: 'nowrap', overflow: 'hidden', to allow wrapping
     marginTop: view === 'month' ? '0px' : '1px',
   },
-
+  
   '& .notification-chip': {
     position: 'absolute',
     top: 2,
@@ -126,12 +86,3 @@ export const StyledEvent = styled('div')(({ theme, view }) => ({
   }
 }));
 
-// Event colors are now mostly for internal logic, not background
-export const eventColors = {
-  "1st Round": EVENT_BORDER_COLOR,
-  "Test": EVENT_BORDER_COLOR,
-  "2nd Round": EVENT_BORDER_COLOR,
-  "3rd Round": EVENT_BORDER_COLOR,
-  "Final Round": EVENT_BORDER_COLOR,
-  "default": EVENT_BORDER_COLOR
-};

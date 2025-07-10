@@ -1,26 +1,11 @@
-import React from 'react';
 import CalendarComponent from './components/CalendarComponent';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
+import Map from './components/Map';
 
-// Define your custom theme
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#4285F4', // Google Blue for primary actions
-    },
-    secondary: {
-      main: '#DB4437', // A secondary color if needed (e.g., Google Red)
-    },
-    background: {
-      default: '#f8f9fa', // Light background for the overall app
-      paper: '#FFFFFF', // White for cards/modals
-    },
-    text: {
-      primary: '#333333',
-      secondary: '#666666',
-    }
-  },
+ 
   typography: {
     fontFamily: 'Roboto, sans-serif',
     h5: {
@@ -38,19 +23,10 @@ const theme = createTheme({
         },
       },
     },
-    MuiAppBar: { // Customizing AppBar for the top navigation
+    MuiPaper: { 
       styleOverrides: {
         root: {
-          // If you want a full white app bar:
-          // backgroundColor: '#FFFFFF',
-          // borderBottom: '1px solid #eee',
-        }
-      }
-    },
-    MuiPaper: { // Customizing general Paper component (used for calendar container)
-      styleOverrides: {
-        root: {
-          boxShadow: 'none', // Remove default shadow from Paper components if desired
+          boxShadow: 'none', 
         }
       }
     }
@@ -61,7 +37,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <CalendarComponent />
+       <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/calendar" replace />} />
+          <Route path="/calendar" element={<CalendarComponent />} />
+          <Route path="/map" element={<Map />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }

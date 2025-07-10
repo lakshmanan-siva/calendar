@@ -1,4 +1,4 @@
-import { VibrantToolbar, ViewButton, DEFAULT_EVENT_BACKGROUND, EVENT_BORDER_COLOR } from '../styles/calendarStyles';
+import { EVENT_BORDER_COLOR } from '../styles/calendarStyles';
 import moment from 'moment';
 
 
@@ -15,8 +15,8 @@ export const initialEvents = [
     comment: null,
     score: { "P": 8 },
     link: "https://meet.google.com/abc-xyz-123",
-    resume_link: "https://example.com/mohan_raj_resume.pdf", // Added for popup
-    aadhar_link: "https://example.com/mohan_raj_aadhar.pdf", // Added for popup
+    resume_link: "https://example.com/mohan_raj_resume.pdf", 
+    aadhar_link: "https://example.com/mohan_raj_aadhar.pdf", 
     user_det: {
       id: 1,
       question_score: null,
@@ -40,7 +40,7 @@ export const initialEvents = [
       },
       job_id: {
         id: 11,
-        jobRequest_Title: "Python Developer", // Changed to match "Python Developer" from image
+        jobRequest_Title: "Python Developer", 
         jobRequest_Role: "Software Engineer",
         jobRequest_KeySkills: "Python, Django, REST APIs",
         jobRequest_Description: "Looking for experienced Django developer"
@@ -54,8 +54,8 @@ export const initialEvents = [
     title: "Tech Test: Mohan Raj",
     summary: "Technical Assessment",
     desc: "Coding test for Django Developer position",
-    start: new Date(new Date().setHours(12, 0, 0)), // Changed time to match Day.jpg
-    end: new Date(new Date().setHours(12, 30, 0)), // Changed time to match Day.jpg
+    start: new Date(new Date().setHours(12, 0, 0)),
+    end: new Date(new Date().setHours(12, 30, 0)), 
     attendees: null,
     status: null,
     comment: null,
@@ -78,13 +78,13 @@ export const initialEvents = [
         last_login: null,
         userEmail: "vinodhini_hr@dataterrain.com",
         username: "vinodhini_hr",
-        firstName: "Geetha", // Used Geetha for consistency with images
+        firstName: "Geetha", 
         lastName: "HR",
         userRole: "hr_employee"
       },
       job_id: {
         id: 11,
-        jobRequest_Title: "Python Developer", // Changed to match "Python Developer" from image
+        jobRequest_Title: "Python Developer", 
         jobRequest_Role: "Software Engineer",
         jobRequest_KeySkills: "Python, Django, REST APIs",
         jobRequest_Description: "Looking for experienced Django developer"
@@ -98,8 +98,8 @@ export const initialEvents = [
     title: "2nd Round: Mohan Raj (Tech Lead)",
     summary: "Technical Interview",
     desc: "In-depth technical interview with engineering team",
-    start: new Date(new Date().setHours(14, 0, 0)), // Changed time to match Day.jpg
-    end: new Date(new Date().setHours(15, 0, 0)), // Changed time to match Day.jpg
+    start: new Date(new Date().setHours(14, 0, 0)), 
+    end: new Date(new Date().setHours(15, 0, 0)), 
     attendees: null,
     status: null,
     comment: null,
@@ -122,13 +122,13 @@ export const initialEvents = [
         last_login: null,
         userEmail: "vinodhini_hr@dataterrain.com",
         username: "vinodhini_hr",
-        firstName: "Geetha", // Used Geetha for consistency with images
+        firstName: "Geetha", 
         lastName: "HR",
         userRole: "hr_employee"
       },
       job_id: {
         id: 11,
-        jobRequest_Title: "Python Developer", // Changed to match "Python Developer" from image
+        jobRequest_Title: "Python Developer", 
         jobRequest_Role: "Software Engineer",
         jobRequest_KeySkills: "Python, Django, REST APIs",
         jobRequest_Description: "Looking for experienced Django developer"
@@ -142,8 +142,8 @@ export const initialEvents = [
     title: "3rd Round: Mohan Raj (Project Manager)",
     summary: "3rd Round Interview",
     desc: "Discussion with project manager",
-    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(), // Today, 10 AM - Event 1 of multiple, aligned with images
-    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(), // Today, 11 AM
+    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(),
+    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(),
     link: "https://meet.google.com/pqr-stu-789",
     resume_link: "https://example.com/mohan_raj_resume.pdf",
     user_det: {
@@ -159,8 +159,8 @@ export const initialEvents = [
     title: "Final Round: Mohan Raj (Director)",
     summary: "Final Round Interview",
     desc: "Final interview with the Director",
-    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(), // Today, 10 AM, will be grouped if on same day as event 4
-    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(), // Today, 11 AM
+    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(), 
+    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(), 
     link: "https://meet.google.com/vwx-yza-012",
     user_det: {
       handled_by: { firstName: "Geetha", lastName: "HR", userEmail: "geetha@dataterrain.com", userRole: "hr_employee" },
@@ -192,8 +192,8 @@ export const initialEvents = [
     title: "Client Meeting: Project X",
     summary: "Project X Meeting",
     desc: "Meeting with client for Project X",
-    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(), // Today, 10 AM, will be grouped if on same day as events 4, 5
-    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(), // Today, 11 AM
+    start: moment().add(0, 'days').set({ hour: 10, minute: 0 }).toDate(), 
+    end: moment().add(0, 'days').set({ hour: 11, minute: 0 }).toDate(), 
     link: "https://meet.google.com/abc-def-ghi",
     user_det: {
       handled_by: { firstName: "Geetha", lastName: "HR", userEmail: "geetha@dataterrain.com", userRole: "hr_employee" },

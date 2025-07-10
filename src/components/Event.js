@@ -12,7 +12,6 @@ const Event = ({ event, view, allEventsForDay, onSelectEvent, ...props }) => {
   const isFirstEventForDay = shouldAggregate && allEventsForDay && allEventsForDay[0]?.id === event.id;
   const hasMultipleEvents = allEventsForDay && allEventsForDay.length > 1;
 
-  console.log(allEventsForDay, "dau")
 
   const handleEventClick = (e) => {
     e.stopPropagation(); 
@@ -45,11 +44,11 @@ const Event = ({ event, view, allEventsForDay, onSelectEvent, ...props }) => {
     <>
       <div
         style={{
-          ...props.style, // Apply react-big-calendar's calculated styles here
+          ...props.style,
           cursor: 'pointer',
         }}
         onClick={handleEventClick}
-        aria-describedby={id} // Associate with the popover for accessibility
+        aria-describedby={id} 
       >
         <StyledEvent eventcolor={event.color} view={view}>
           <div className="event-title">{event.user_det?.job_id?.jobRequest_Title || event.summary}</div>
@@ -64,11 +63,11 @@ const Event = ({ event, view, allEventsForDay, onSelectEvent, ...props }) => {
               size="small"
               className="notification-chip"
               sx={{
-                backgroundColor: chipBackgroundColor, // Use the event's main color for the chip
+                backgroundColor: chipBackgroundColor,
                 color: 'white',
                 fontSize: '0.7rem',
                 height: '18px',
-                position: 'absolute', // Position the chip on top right relative to StyledEvent
+                position: 'absolute',
                 top: 2,
                 right: 2,
               }}

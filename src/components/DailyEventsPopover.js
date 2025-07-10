@@ -1,4 +1,3 @@
-// src/components/DailyEventsPopover.jsx (Use the version from my LAST complete response)
 import React from 'react';
 import { Popover, Box, Typography, Button, IconButton, List, ListItem, ListItemText, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -51,8 +50,8 @@ const DailyEventsPopover = ({ id, open, anchorEl, onClose, events, onSelectEvent
               <ListItem
                 button
                 onClick={() => {
-                  onClose(); // Close the popover first
-                  onSelectEvent(event); // Then open the detailed modal
+                  onClose(); 
+                  onSelectEvent(event); 
                 }}
                 sx={{ py: 0.5, px: 1, '&:hover': { backgroundColor: 'action.hover' } }}
               >

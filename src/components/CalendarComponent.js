@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import  { useState, useMemo } from 'react';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -19,8 +19,8 @@ import Event from './Event';
 import EventDetailsModal from './EventDetailsModal';
 import CalendarToolbar from './CalendarToolbar';
 
-// Localizer for moment.js
 const localizer = momentLocalizer(moment);
+
 
 const CalendarComponent = () => {
   const [view, setView] = useState(Views.MONTH);
@@ -28,7 +28,6 @@ const CalendarComponent = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Group events by day for month view
   const groupedEvents = useMemo(() => {
     const groups = {};
     initialEvents.forEach(event => {
@@ -38,7 +37,6 @@ const CalendarComponent = () => {
       }
       groups[dayKey].push(event);
     });
-    // Sort events within each day by start time
     for (const dayKey in groups) {
       groups[dayKey].sort((a, b) => moment(a.start).diff(moment(b.start)));
     }
@@ -46,21 +44,6 @@ const CalendarComponent = () => {
   }, [initialEvents]);
 
   const getDateDisplay = () => {
-    // Current date for comparison
-    const currentDateFormatted = moment().format('MMMM D,YYYY');
-
-    // Special handling for "March 05, 2024" as seen in images
-    if (moment(date).isSame(moment('2024-03-05'), 'day') && view === Views.DAY) {
-      return 'March 05, 2024';
-    }
-    const startOfWeek = moment(date).startOf('week');
-    const endOfWeek = moment(date).endOf('week');
-    if (view === Views.WEEK && moment('2024-03-05').isBetween(startOfWeek, endOfWeek, null, '[]')) {
-      return 'March 05, 2024';
-    }
-
-
-    // General date display logic
     switch (view) {
       case Views.MONTH:
         return moment(date).format('MMMM YYYY');
@@ -68,8 +51,6 @@ const CalendarComponent = () => {
         return `${moment(date).startOf('week').format('MMM D')} - ${moment(date).endOf('week').format('MMM D, YYYY')}`;
       case Views.DAY:
         return moment(date).format('dddd, MMMM D, YYYY');
-      case Views.YEAR:
-        return moment(date).format('YYYY');
       default:
         return moment(date).format('MMMM YYYY');
     }
@@ -78,13 +59,6 @@ const CalendarComponent = () => {
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
     setModalOpen(true);
-  };
-
-  const handleNavigate = (newDate, newView) => {
-    setDate(newDate);
-    if (newView && newView !== view) {
-      setView(newView);
-    }
   };
 
   const handleViewChange = (newView) => {
@@ -241,20 +215,17 @@ const CalendarComponent = () => {
           view={view}
           onView={handleViewChange}
           date={date}
-          onNavigate={handleNavigate}
-          onSelectEvent={() => { }} 
           components={{
             event: (props) => {
               const dayKey = moment(props.event.start).format('YYYY-MM-DD');
               const allEventsOnThisDay = groupedEvents[dayKey] || [];
 
-              // Pass all necessary props to our custom Event component
               return (
                 <Event
                   {...props}
                   view={view}
                   allEventsForDay={allEventsOnThisDay}
-                  onSelectEvent={handleSelectEvent} // The original modal opener
+                  onSelectEvent={handleSelectEvent}
                 />
               );
             },
@@ -269,7 +240,7 @@ const CalendarComponent = () => {
           })}
           formats={{
             timeGutterFormat: 'h A',
-            eventTimeRangeFormat: () => '', // Ensure no time range is displayed by default in the label
+            eventTimeRangeFormat: () => '', 
             dayRangeHeaderFormat: ({ start, end }, culture, localizer) =>
               localizer.format(start, 'MMM D', culture) + ' - ' + localizer.format(end, 'D, YYYY', culture),
             agendaDateFormat: 'ddd, MMM D',
@@ -278,7 +249,6 @@ const CalendarComponent = () => {
             weekHeaderFormat: 'MMM D',
             yearHeaderFormat: 'YYYY',
           }}
-          className="my-custom-calendar"
         />
       </Box>
 
